@@ -97,6 +97,7 @@ body {
 /* Mobile View */
 @media (max-width: 600px) {
     .card {
+        margin-top:50%;
         padding: 20px 15px;
     }
 
