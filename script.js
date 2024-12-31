@@ -17,21 +17,30 @@ const updateForecastitemsContainer = document.querySelector('.forecast-items-con
 
 const apiKey = '57cbec3bce5ecf15038acfb13ebb8cc3';
 
+// Focus on cityInput when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    cityInput.focus();
+});
+// Focus on cityInput after search button click
 searchBtn.addEventListener('click', () => {
     if (cityInput.value.trim() != '') {
         updateWeatherInfo(cityInput.value);
         cityInput.value = '';
         cityInput.blur();
+        cityInput.focus(); // Focus back on the input field
     }
 });
 
+// Focus on cityInput after pressing Enter key
 cityInput.addEventListener('keydown', (event) => {
     if (event.key == 'Enter' && cityInput.value.trim() != '') {
         updateWeatherInfo(cityInput.value);
         cityInput.value = '';
         cityInput.blur();
+        cityInput.focus(); // Focus back on the input field
     }
 });
+
 
 async function getFetchData(endPoint, city) {
     const apiUrl = `https://api.openweathermap.org/data/2.5/${endPoint}?q=${city}&appid=${apiKey}&units=metric`;
@@ -147,3 +156,4 @@ function showDisplaySection(Section) {
 
     Section.style.display = 'flex';
 }
+
