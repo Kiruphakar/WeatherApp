@@ -1,121 +1,39 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
-    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" 
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />    
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <main class="main-container ">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Weather App</title>
+        <link rel="stylesheet" type="" href="style.css">
+    </head>
+    <body>
+        <div class="card">
+            <div class="search">
+                <input type="text" placeholder="enter the city name" spellcheck="false">
+                <button><img src="images/search.png" alt=""></button>
+            </div>
+            <div class="weather">
+                <img src="images/rain.png" alt="" class="weather-icon">
+                <h1 class="temp">0°C</h1>
+                <h2 class="city">_ _ _</h2>
+                <div class="details">
+                    <div class="col">
+                        <img src="images/humidity.png" alt="">
+                        <div>
+                            <p class="humidity">_ _%</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
 
-        <header class="input-container">
-            <input class="city-input" placeholder="Search City" type="text">
-            <button class="search-btn">
-                <!-- search svg -->
-                <svg class="svg-icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" 
-                viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M398.9 735.5c-185.4 0-336.3-150.9-336.3-336.3C62.7 213.9 213.5 63 398.9 63s336.2 150.9 336.2 336.2c0.1 185.4-150.8 336.3-336.2 336.3m0-597.8c-144.2 0-261.5 117.3-261.5 261.5s117.4 261.5 261.5 261.5c144.2 0 261.5-117.3 261.5-261.5 0.1-144.2-117.3-261.5-261.5-261.5" fill="white" />
-                    <path d="M865.9 959.6c-23.9 0-47.8-9.1-66-27.3L540.3 672.6c-14.6-14.6-14.6-38.3 0-52.8 14.6-14.6 38.2-14.6 52.8 0l259.6 259.7c7.4 7.4 19 7.4 26.4 0 3.7-3.7 5.5-8.1 5.5-13.2s-1.9-9.5-5.5-13.2L717.9 691.8c-14.6-14.6-14.6-38.2 0-52.8 14.6-14.6 38.2-14.6 52.8 0l161.2 161.2c17.7 17.7 27.4 41.1 27.4 66s-9.7 48.3-27.4 66c-18.2 18.2-42.1 27.4-66 27.4M249.5 436.6c-20.6 0-37.3-16.7-37.3-37.4 0-103 83.8-186.8 186.8-186.8 20.6 0 37.3 16.7 37.3 37.4 0 20.6-16.7 37.3-37.3 37.3-61.8 0-112.1 50.3-112.1 112.1 0 20.6-16.8 37.4-37.4 37.4" fill="#C6CCDA" />
-                </svg>
-            </button>
-        </header>
-        <section class="weather-info" style="display:none;">
-            <div class="location-date-container">
-                <div class="location">
-                    <!-- location svg -->
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                        <path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z" fill="white"/>
-                    </svg>
-                    <h4 class="country-txt">______</h4>
-                </div>
-                <h5 class="current-date-txt regular-txt">___, __ ___</h5>
-            </div>
-            <div class="weather-summery-container">
-                <!-- cloud img -->
-                <img src="assets/clouds.svg" alt="" class="weather-summery-img">
-                <div class="weather-summary-info">
-                    <h1 class="temp-txt">__ ॰C</h1>
-                    <h3 class="condition-txt regular-txt">Clouds</h3>
-                </div>
-            </div>
-            <div class="weather-conditions-container">
-                <div class="condition-item">
-                    <!-- //water drop -->
-                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" 
-                    viewBox="0 -960 960 960" width="30px" fill="#5f6368">
-                    <path d="M491-200q12-1 20.5-9.5T520-230q0-14-9-22.5t-23-7.5q-41 3-87-22.5T343-375q-2-11-10.5-18t-19.5-7q-14 0-23 10.5t-6 24.5q17 91 80 130t127 35ZM480-80q-137 0-228.5-94T160-408q0-100 79.5-217.5T480-880q161 137 240.5 254.5T800-408q0 140-91.5 234T480-80Zm0-80q104 0 172-70.5T720-408q0-73-60.5-165T480-774Q361-665 300.5-573T240-408q0 107 68 177.5T480-160Zm0-320Z" fill="white"/>
-                </svg>
-                    <div class="condition-info">
-                        <h5 class="regular-txt">Humidity</h5>
-                        <h5 class="humidity-value-txt">__ %</h5>
+                    <div class="col">
+                        <img src="images/wind1.png" alt="">
+                        <div>
+                            <p class="wind">_ _ km/h</p>
+                            <p>Wind Speed</p>
+                        </div>
                     </div>
                 </div>
-                <div class="condition-item">
-                    <!-- windmill -->
-                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" 
-                    viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
-                    <path d="M400-40q0-33 23.5-56.5T480-120v-208q-12-5-22.5-11.5T438-354l-88 56q-14 8-30.5 10.5T286-290l-180-51q-29-8-47.5-32.5T40-429q0-38 26.5-64.5T131-520h301q10-11 22-19t26-13v-137q0-17 6.5-32t18.5-26l137-128q23-22 53.5-25t56.5 13q32 20 41.5 56.5T783-762L624-499q7 12 10.5 26t4.5 29l108 26q16 4 29 14t21 24l91 164q15 27 11 57t-26 52q-27 27-64.5 27T744-107L560-291v171q33 0 56.5 23.5T640-40H400ZM160-760v-80h240v80H160Zm400 71v137q1 0 1.5.5t1.5.5l152-253q2-4 1-8.5t-5-6.5q-3-2-7.5-1t-6.5 3L560-689ZM40-600v-80h200v80H40Zm480 200q17 0 28.5-11.5T560-440q0-17-11.5-28.5T520-480q-17 0-28.5 11.5T480-440q0 17 11.5 28.5T520-400Zm-211 34 93-56q-1-5-1-9v-9H131q-5 0-8 3t-3 8q0 4 2 7t6 4l181 52Zm419 25-114-26q-2 2-4 5t-4 5l195 194q3 3 8 3t8-3q3-3 3.5-6.5T819-177l-91-164ZM120-120v-80h200v80H120Zm400-320Zm43-111ZM401-440Zm205 83Z"/>
-                    </svg>
-                    <div class="condition-info">
-                        <h5 class="regular-txt">Wind Speed</h5>
-                        <h5 class="wind-value-txt">__ M/s</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="forecast-items-container">
-            <!-- day 1 -->
-            <div class="forecast-item">
-                <h5 class="forecast-item-date regular-txt">-- ---</h5>
-                <img src="assets/clouds.svg" alt="" class="forecast-item-img">
-                <h5 class="forecast-item-temp"> __ ॰C</h5>
-            </div>
-            <!-- day 2 -->
-            <div class="forecast-item">
-                <h5 class="forecast-item-date regular-txt">-- ---</h5>
-                <img src="assets/clouds.svg" alt="" class="forecast-item-img">
-                <h5 class="forecast-item-temp"> __ ॰C</h5>
-            </div>
-            <!-- day 3 -->
-            <div class="forecast-item">
-                <h5 class="forecast-item-date regular-txt">-- ---</h5>
-                <img src="assets/clouds.svg" alt="" class="forecast-item-img">
-                <h5 class="forecast-item-temp"> __ ॰C</h5>
-            </div>
-            <!-- day 4 -->
-            <div class="forecast-item">
-                <h5 class="forecast-item-date regular-txt">-- ---</h5>
-                <img src="assets/clouds.svg" alt="" class="forecast-item-img">
-                <h5 class="forecast-item-temp"> __ ॰C</h5>
-            </div>
-            
             </div>
         </div>
-        </section>
-        <section class="not-found search-city section-message">
-            <img class="message-img" src="assets/search.png.png" alt="search city">
-            <div>
-                <h1>Search City</h1>
-                <h4 class="regular-txt">
-                    Find out the weather condition of the city   
-                </h4>
-            </div> 
-        </section>
-        <section class="search-city section-message" style="display: none;">
-            <img class="message-img" src="assets/404-error.svg" style="height:18rem; width: 18rem;" alt="search city">
-            <div>
-                <h1>Search City</h1>
-                <h4 class="regular-txt">
-                    Find out the weather condition of the city   
-                </h4>
-            </div> 
-        </section>
-    </main>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
